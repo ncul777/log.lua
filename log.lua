@@ -9,6 +9,7 @@
 
 local log = { _version = "0.1.0" }
 
+log.useconsole = true
 log.usecolor = true
 log.outfile = nil
 log.level = "trace"
@@ -66,13 +67,15 @@ for i, x in ipairs(modes) do
     local lineinfo = info.short_src .. ":" .. info.currentline
 
     -- Output to console
-    print(string.format("%s[%-6s%s]%s %s: %s",
-                        log.usecolor and x.color or "",
-                        nameupper,
-                        os.date("%H:%M:%S"),
-                        log.usecolor and "\27[0m" or "",
-                        lineinfo,
-                        msg))
+    if log.useconsole then
+        print(string.format("%s[%-6s%s]%s %s: %s",
+                            log.usecolor and x.color or "",
+                            nameupper,
+                            os.date("%H:%M:%S"),
+                            log.usecolor and "\27[0m" or "",
+                            lineinfo,
+                            msg))
+    end
 
     -- Output to log file
     if log.outfile then

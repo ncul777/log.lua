@@ -49,6 +49,10 @@ ignored.
 The level of each log mode, starting with the lowest log level is as follows:
 `"trace"` `"debug"` `"info"` `"warn"` `"error"` `"fatal"`
 
+#### log.console
+Wether to print to console. By default this is `true`
+If uhttpd server is used then it should be disabled as the logs are captured 
+and returned in http response!
 
 ## License
 This library is free software; you can redistribute it and/or modify it under
